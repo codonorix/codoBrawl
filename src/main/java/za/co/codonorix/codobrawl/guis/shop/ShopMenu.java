@@ -16,7 +16,8 @@ import java.util.List;
 
 public class ShopMenu {
 	public Inventory shopMenu() {
-		Inventory shopMenu = Bukkit.createInventory(new ShopHolder(), 27);
+		Inventory shopMenu = Bukkit.createInventory(new ShopHolder(), 27, Component.text("Brawl Shop"));
+
 		ItemStack offensiveSkills = itemBuilder(ChatColor.GOLD + "Offensive Skills", Material.IRON_SWORD, null);
 		ItemStack utilitySkills = itemBuilder(ChatColor.YELLOW + "Utility Skills", Material.GLOWSTONE_DUST, null);
 		ItemStack SupportSkills = itemBuilder(ChatColor.GREEN + "Support Skills", Material.GREEN_DYE, null);
