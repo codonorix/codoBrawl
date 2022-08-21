@@ -1,0 +1,5 @@
+name: CodoBrawl
+version: '${project.version}'
+main: za.co.codonorix.codobrawl.CodoBrawl
+api-version: 1.19
+authors: [ logan2971 ]
