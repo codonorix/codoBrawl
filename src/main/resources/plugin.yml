@@ -3,3 +3,6 @@ version: '${project.version}'
 main: za.co.codonorix.codobrawl.CodoBrawl
 api-version: 1.19
 authors: [ logan2971 ]
+commands:
+  dev:
+    description: Dev command

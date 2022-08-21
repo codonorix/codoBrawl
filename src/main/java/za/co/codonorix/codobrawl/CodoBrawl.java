@@ -1,13 +1,18 @@
 package za.co.codonorix.codobrawl;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import za.co.codonorix.codobrawl.commands.DevCommand;
+import za.co.codonorix.codobrawl.events.ShopMenuClickEvent;
 
 public final class CodoBrawl extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
-		// Plugin startup logic
-		System.out.println("test");
+		//Command registration
+		this.getCommand("dev").setExecutor(new DevCommand());
+
+		//Event registration
+		getServer().getPluginManager().registerEvents(new ShopMenuClickEvent(), this);
 	}
 
 	@Override
