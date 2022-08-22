@@ -1,5 +1,7 @@
 package za.co.codonorix.codobrawl.player_info;
 
+import za.co.codonorix.codobrawl.helper_classes.ShopItemObject;
+
 import java.util.ArrayList;
 
 public class PlayerInformationObject {
@@ -19,7 +21,7 @@ public class PlayerInformationObject {
 	private ArrayList<String> runesUnlocked;
 	private ArrayList<String> combatUpgradesUnlocked;
 	private ArrayList<String> hatsUnlocked;
-	private String offensiveSkillSelected;
+	private ShopItemObject offensiveSkillSelected;
 	private String utilitySkillSelected;
 	private String supportSkillSelected;
 	private String ultimateSkillSelected;
@@ -34,7 +36,7 @@ public class PlayerInformationObject {
 								   ArrayList<String> utilitySkillsUnlocked, ArrayList<String> supportSkillsUnlocked,
 								   ArrayList<String> ultimateSkillsUnlocked, ArrayList<String> runesUnlocked,
 								   ArrayList<String> combatUpgradesUnlocked, ArrayList<String> hatsUnlocked,
-								   String offensiveSkillSelected, String utilitySkillSelected, String supportSkillSelected,
+								   ShopItemObject offensiveSkillSelected, String utilitySkillSelected, String supportSkillSelected,
 								   String ultimateSkillSelected, String runeSelected, String hatSelected) {
 
 		this.rating = rating;
@@ -189,11 +191,11 @@ public class PlayerInformationObject {
 		this.hatsUnlocked = hatsUnlocked;
 	}
 
-	public String getOffensiveSkillSelected() {
+	public ShopItemObject getOffensiveSkillSelected() {
 		return offensiveSkillSelected;
 	}
 
-	public void setOffensiveSkillSelected(String offensiveSkillSelected) {
+	public void setOffensiveSkillSelected(ShopItemObject offensiveSkillSelected) {
 		this.offensiveSkillSelected = offensiveSkillSelected;
 	}
 

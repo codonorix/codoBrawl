@@ -6,6 +6,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
@@ -52,9 +53,10 @@ public class ShopItemObject {
 		ItemStack itemStack = new ItemStack(getMaterial(), 1);
 		ItemMeta itemStackItemMeta = itemStack.getItemMeta();
 
-		if(selected){
+		if(isSelected()){
 			itemStackItemMeta.addEnchant(Enchantment.ARROW_DAMAGE, 1, true);
-			itemNameComponent = Component.text(getName() + ChatColor.GREEN + "" + ChatColor.BOLD + "SELECTED");
+			itemStackItemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+			itemNameComponent = Component.text(getName() + ChatColor.GREEN + "" + ChatColor.BOLD + " SELECTED");
 		}
 
 		itemStackItemMeta.displayName(itemNameComponent);
@@ -114,5 +116,9 @@ public class ShopItemObject {
 
 	public void setSelected(boolean selected) {
 		this.selected = selected;
+
+		if(selected){
+			createItem();
+		}
 	}
 }

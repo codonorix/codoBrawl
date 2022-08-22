@@ -8,6 +8,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import za.co.codonorix.codobrawl.CodoBrawl;
 import za.co.codonorix.codobrawl.guis.offensive_skills.abilities_effect.SnowBall;
 import za.co.codonorix.codobrawl.guis.shop.ShopMenu;
+import za.co.codonorix.codobrawl.helper_classes.ShopItemObject;
 import za.co.codonorix.codobrawl.player_info.PlayerInformationObject;
 import za.co.codonorix.codobrawl.stats.PlayerInformation;
 
@@ -25,9 +26,9 @@ public class OffensiveItemClickEvent implements Listener {
         itemMeta = event.getItem().getItemMeta();
 
         if (itemMeta.getPersistentDataContainer().has(key)) {
-            String skill = PlayerInformation.getInformation(event.getPlayer().getUniqueId()).getOffensiveSkillSelected();
+            ShopItemObject skill = PlayerInformation.getInformation(event.getPlayer().getUniqueId()).getOffensiveSkillSelected();
 
-            switch (skill){
+            switch (skill.getId()){
                 case "SNOWBALL":
                     new SnowBall().snowBallEffect(event.getPlayer());
                     break;

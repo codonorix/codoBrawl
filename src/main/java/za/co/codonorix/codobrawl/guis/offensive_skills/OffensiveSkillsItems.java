@@ -1,42 +1,36 @@
 package za.co.codonorix.codobrawl.guis.offensive_skills;
 
-import net.kyori.adventure.text.Component;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.entity.Item;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-import za.co.codonorix.codobrawl.helper_classes.ItemCreator;
 import za.co.codonorix.codobrawl.helper_classes.ShopItemObject;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class OffensiveSkills {
-	ItemCreator itemBuilder = new ItemCreator();
+public class OffensiveSkillsItems {
+	static ArrayList<ShopItemObject> instance = null;
 
-	public Inventory offensiveSkills() {
-		Inventory offensiveSkillsMenu = Bukkit.createInventory(new OffensiveSkillsHolder(), 36, Component.text("Offensive skills"));
+	public ArrayList<ShopItemObject> getInstance() {
+		if(instance == null){
+			System.out.println("I run again");
+			instance = new ArrayList<>();
+			instance.add(boulderToss());
+			instance.add(cookieShotgun());
+			instance.add(fireBall());
+			instance.add(flameBreath());
+			instance.add(freezeBreath());
+			instance.add(guidedPig2000());
+			instance.add(lightningShot());
+			instance.add(melonLauncher());
+			instance.add(proximityMine());
+			instance.add(rocketChicken());
+			instance.add(seismicSlam());
+			instance.add(snowball());
+		}
 
-		offensiveSkillsMenu.setItem(10, boulderToss().createItem());
-		offensiveSkillsMenu.setItem(11, cookieShotgun().createItem());
-		offensiveSkillsMenu.setItem(12, fireBall().createItem());
-		offensiveSkillsMenu.setItem(13, flameBreath().createItem());
-		offensiveSkillsMenu.setItem(14, freezeBreath().createItem());
-		offensiveSkillsMenu.setItem(15, guidedPig2000().createItem());
-		offensiveSkillsMenu.setItem(16, lightningShot().createItem());
-		offensiveSkillsMenu.setItem(20, melonLauncher().createItem());
-		offensiveSkillsMenu.setItem(21, proximityMine().createItem());
-		offensiveSkillsMenu.setItem(22, rocketChicken().createItem());
-		offensiveSkillsMenu.setItem(23, seismicSlam().createItem());
-		offensiveSkillsMenu.setItem(24, snowball().createItem());
-
-		return offensiveSkillsMenu;
+		return instance;
 	}
-
 	private ShopItemObject boulderToss() {
 		String name = ChatColor.GREEN + "Boulder Toss";
 		List<String> lore = new ArrayList<>(Arrays.asList("Throws a hard rock at your enemies", "Ouch... sounds like you hit rock bottom."));
