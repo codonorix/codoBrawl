@@ -2,6 +2,7 @@ package za.co.codonorix.codobrawl;
 
 import org.bukkit.plugin.java.JavaPlugin;
 import za.co.codonorix.codobrawl.commands.DevCommand;
+import za.co.codonorix.codobrawl.events.OffensiveSkillsClickEvent;
 import za.co.codonorix.codobrawl.events.OnJoinEvent;
 import za.co.codonorix.codobrawl.events.ShopItemClick;
 import za.co.codonorix.codobrawl.events.ShopMenuClickEvent;
@@ -19,6 +20,7 @@ public final class CodoBrawl extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new ShopMenuClickEvent(), this);
 		getServer().getPluginManager().registerEvents(new OnJoinEvent(), this);
 		getServer().getPluginManager().registerEvents(new ShopItemClick(), this);
+		getServer().getPluginManager().registerEvents(new OffensiveSkillsClickEvent(), this);
 	}
 
 	@Override
