@@ -20,6 +20,8 @@ public class ShopMenuClickEvent implements Listener {
 			Player player = (Player) event.getWhoClicked();
 			ItemStack item = event.getCurrentItem();
 
+			if(item == null)return;
+
 			if(item.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(CodoBrawl.getInstance(), "OFFENSIVE_SKILLS"))) {
 				player.openInventory(new OffensiveSkills().offensiveSkills());
 			}
