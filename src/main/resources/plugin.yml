@@ -12,3 +12,5 @@ commands:
     description: Displays the codobrawl help menu
   removecrystals:
     description: Removes crystals from user
+  setlobby:
+    description: Sets the lobby of the world.

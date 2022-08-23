@@ -47,6 +47,8 @@ public class OffensiveSkillsClickEvent implements Listener {
                     player.sendMessage(ChatColor.GREEN + "Selected snowball!");
                     playerData.getOffensiveSkillSelected().setSelected(true);
                     player.playSound(player.getLocation(), Sound.BLOCK_POWDER_SNOW_BREAK, 1, 0.9f);
+//                    player.playSound(player.getLocation(), Sound.ENTITY_GHAST_SCREAM, 1, 10f);
+
 
                 }else{
                     if(!(playerData.getCrystals() >= 5000)) {

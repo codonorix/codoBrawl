@@ -14,6 +14,9 @@ import java.util.List;
 
 public class OffensiveSkillsMenu {
 	public Inventory offensiveSkills() {
+		/*
+		TODO - Create an instance of each inventory for the user and place it in hashmap to solve slelect for everyone bug
+		 */
 		Inventory offensiveSkillsMenu = Bukkit.createInventory(new OffensiveSkillsHolder(), 36, Component.text("Offensive skills"));
 		ArrayList<ShopItemObject> items = new OffensiveSkillsItems().getInstance();
 

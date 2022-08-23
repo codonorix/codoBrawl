@@ -1,9 +1,14 @@
 package za.co.codonorix.codobrawl.events;
 
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.World;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import za.co.codonorix.codobrawl.CodoBrawl;
 import za.co.codonorix.codobrawl.game_items.OffensiveItem;
 import za.co.codonorix.codobrawl.game_mechanics.GamePlayerObject;
 import za.co.codonorix.codobrawl.guis.offensive_skills.OffensiveSkillsMenu;
@@ -21,6 +26,8 @@ public class OnJoinEvent implements Listener {
 		PlayerScoreboard playerScoreboard = new PlayerScoreboard();
 		player.getInventory().clear();
 
+		player.teleport(spawnLocation());
+
 		player.getInventory().setItem(0, new ShopItem().shopMenu());
 		player.getInventory().setItem(1, new OffensiveItem().offensiveItem(player.getUniqueId()));
 		ArrayList<String> blankList = new ArrayList<>();
@@ -36,5 +43,17 @@ public class OnJoinEvent implements Listener {
 
 //		player.setScoreboard(playerScoreboard.setScoreBoard(player));
 		new PlayerScoreboard().setScoreBoard(player);
+	}
+
+	public Location spawnLocation() {
+		FileConfiguration configuration = CodoBrawl.getInstance().getConfig();
+		World world = Bukkit.getWorld(configuration.getString("location.World"));
+		double x = configuration.getDouble("location.x");
+		double y = configuration.getDouble("location.y");
+		double z = configuration.getDouble("location.z");
+		float yaw = (float) configuration.getDouble("location.yaw");
+		float pitch = (float) configuration.getDouble("location.pitch");
+
+		return new Location(world, x, y, z, yaw, pitch);
 	}
 }
