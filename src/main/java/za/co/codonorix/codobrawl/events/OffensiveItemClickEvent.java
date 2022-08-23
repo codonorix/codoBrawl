@@ -27,6 +27,7 @@ public class OffensiveItemClickEvent implements Listener {
 
         if (itemMeta.getPersistentDataContainer().has(key)) {
             ShopItemObject skill = PlayerInformation.getInformation(event.getPlayer().getUniqueId()).getOffensiveSkillSelected();
+            if(skill == null)return;
 
             switch (skill.getId()){
                 case "SNOWBALL":

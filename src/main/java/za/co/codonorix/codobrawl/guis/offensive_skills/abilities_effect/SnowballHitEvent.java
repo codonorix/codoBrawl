@@ -33,7 +33,7 @@ public class SnowballHitEvent implements Listener {
 
 			if(data.getHealth() <= 0){
 				player.sendTitle(ChatColor.RED + "YOU LOST!", "");
-				GamePlayerObject gpo = new GamePlayerObject(1, 2000);
+				GamePlayerObject gpo = new GamePlayerObject(1, 2000, 100);
 				PlayerInformation.addPlayerGameData(player.getUniqueId(),gpo);
 				return;
 			}

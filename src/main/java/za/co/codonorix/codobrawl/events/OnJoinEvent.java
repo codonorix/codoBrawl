@@ -26,10 +26,12 @@ public class OnJoinEvent implements Listener {
 		ArrayList<String> blankList = new ArrayList<>();
 
 		OffensiveSkillsMenu offensiveSkillsMenu = new OffensiveSkillsMenu();
-		PlayerInformationObject pio = new PlayerInformationObject(0, 0, 0, 0, 0, 0, 0, 5000,0,blankList,blankList,blankList,blankList,blankList,blankList,blankList,null, "test2","test3", "test4", "test5", "test6");
-		PlayerInformation.addPlayerData(player.getUniqueId(), pio);
+		if(PlayerInformation.getInformation(player.getUniqueId()) == null) {
+			PlayerInformationObject pio = new PlayerInformationObject(0, 0, 0, 0, 0, 0, 0, 5000, 0, blankList, blankList, blankList, blankList, blankList, blankList, blankList, null, "test2", "test3", "test4", "test5", "test6");
+			PlayerInformation.addPlayerData(player.getUniqueId(), pio);
+		}
 
-		GamePlayerObject gpo = new GamePlayerObject(1, 2000);
+		GamePlayerObject gpo = new GamePlayerObject(1, 2000, 100);
 		PlayerInformation.addPlayerGameData(player.getUniqueId(),gpo);
 
 //		player.setScoreboard(playerScoreboard.setScoreBoard(player));
