@@ -19,7 +19,7 @@ public class SnowBall {
 
         GamePlayerObject playerData = PlayerInformation.getGameInformation(player.getUniqueId());
         playerData.setMana(playerData.getMana() - 15);
-        new ManaBar().setPlayerLevel(player);
+//        new ManaBar().setPlayerLevel(player);
 
         snowball.setVelocity(player.getLocation().getDirection().multiply(1.5));
 

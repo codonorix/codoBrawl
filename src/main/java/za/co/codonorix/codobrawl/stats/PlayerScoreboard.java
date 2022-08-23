@@ -58,6 +58,6 @@ public class PlayerScoreboard {
 				player.setScoreboard(scoreboard);
 
 			}
-		}.runTaskTimer(CodoBrawl.getInstance(), 20, 1);
+		}.runTaskTimer(CodoBrawl.getInstance(), 20, 5*20);
 	}
 }

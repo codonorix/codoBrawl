@@ -18,8 +18,6 @@ public class SnowballHitEvent implements Listener {
 	public void snowballHitEvent(EntityDamageByEntityEvent event) {
 		SnowBall snowBall = new SnowBall();
 		if(!(event.getDamager() instanceof Snowball))return;
-
-
 		if (!(event.getEntity() instanceof Player))return;
 
 		Player player = (Player) event.getEntity();
@@ -28,7 +26,7 @@ public class SnowballHitEvent implements Listener {
 
 		if(event.getDamager().getPersistentDataContainer().has(key)) {
 			GamePlayerObject data = PlayerInformation.getGameInformation(player.getUniqueId());
-			data.setHealth(data.getHealth() - 1000);
+			data.setHealth(data.getHealth() - 25);
 			player.sendMessage("Snowball hit you for 20 damage, " + data.getHealth() + "/2000 hp");
 
 			if(data.getHealth() <= 0){
@@ -52,13 +50,9 @@ public class SnowballHitEvent implements Listener {
 				double randomItemThree = Math.random() * (1 - min) + min;
 
 //				world.spawnParticle(Particle.REDSTONE, x+randomItemOne, y+randomItemTwo, z+randomItemThree, 1, new Particle.DustOptions(Color.RED, 0.5f));
-				world.spawnParticle(Particle.BLOCK_CRACK, x+randomItemOne, y+randomItemTwo, z+randomItemThree, 10,0, 0, 0, Material.REDSTONE_BLOCK.createBlockData());
+				world.spawnParticle(Particle.BLOCK_CRACK, x+randomItemOne, y+randomItemTwo, z+randomItemThree, 10,0, 0, 0, Material.RED_CARPET.createBlockData());
 				player.playSound(player.getLocation(), Sound.BLOCK_SNOW_BREAK, 1, 1);
 			}
-
-
 		}
-
-
 	}
 }

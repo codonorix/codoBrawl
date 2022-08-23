@@ -6,3 +6,9 @@ authors: [ logan2971 ]
 commands:
   dev:
     description: Dev command
+  givecrystals:
+    description: Give user crystals
+  cbhelp:
+    description: Displays the codobrawl help menu
+  removecrystals:
+    description: Removes crystals from user
