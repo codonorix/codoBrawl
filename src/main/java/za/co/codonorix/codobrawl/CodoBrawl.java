@@ -42,6 +42,7 @@ public final class CodoBrawl extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new ArenaCreatorLeaveEvent(), this);
 		getServer().getPluginManager().registerEvents(new ArenaCreatorDropItemEvent(), this);
 		getServer().getPluginManager().registerEvents(new ArenaCreatorBlockPlaceEvent(), this);
+		getServer().getPluginManager().registerEvents(new ArenaCretorSign(), this);
 	}
 
 	@Override
