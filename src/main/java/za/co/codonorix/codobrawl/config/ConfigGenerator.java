@@ -10,6 +10,8 @@ public class ConfigGenerator {
         config.addDefault("location.z", 0.0);
         config.addDefault("location.yaw", 0.0);
         config.addDefault("location.pitch", 0.0);
+
+//        config.addDefault("arenas", null);
         config.options().copyDefaults(true);
     }
 }

@@ -64,7 +64,7 @@ public class DevCommand implements CommandExecutor {
 				}
 			}
 		}.runTaskTimer(CodoBrawl.getInstance(), 0, 1L);
-//		new DeathEffect().deathEffectNormal(player);
+		new DeathEffect().deathEffectNormal(player);
 //		manaBar.setPlayerLevel(player);
 
 //		ManaBar manaBar = new ManaBar();

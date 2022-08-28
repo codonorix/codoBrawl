@@ -14,3 +14,5 @@ commands:
     description: Removes crystals from user
   setlobby:
     description: Sets the lobby of the world.
+  createarena:
+    description: Setups the arena creator.

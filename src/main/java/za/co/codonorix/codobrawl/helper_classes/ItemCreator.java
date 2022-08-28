@@ -2,6 +2,7 @@ package za.co.codonorix.codobrawl.helper_classes;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -14,6 +15,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ItemCreator {
+	public ItemStack itemBuilder(String itemName, TextColor color, Material material, List<String> lore, int price , String id){
+
+		TextComponent itemNameComponent = Component.text(itemName, TextColor.color(color));
+		List<Component> itemLore = new ArrayList<Component>();
+
+		if(!(lore == null)) {
+			for (int i = 0; i < lore.size(); i++) {
+				itemLore.add(Component.text(lore.get(i)));
+			}
+		}
+
+		if(!(price == -1)) {
+			itemLore.add(Component.text(""));
+			itemLore.add(Component.text(ChatColor.LIGHT_PURPLE + Integer.toString(price) + " crystals."));
+		}
+
+		ItemStack itemStack = new ItemStack(material, 1);
+		ItemMeta itemStackItemMeta = itemStack.getItemMeta();
+
+
+		itemStackItemMeta.displayName(itemNameComponent);
+		itemStackItemMeta.lore(itemLore);
+
+		NamespacedKey key = new NamespacedKey(CodoBrawl.getInstance(), id);
+		itemStackItemMeta.getPersistentDataContainer().set(key, PersistentDataType.STRING, id);
+
+		itemStack.setItemMeta(itemStackItemMeta);
+
+		return itemStack;
+	}
 	public ItemStack itemBuilder(String itemName, Material material, List<String> lore, int price ,String id) {
 		/*
 		Creates a new TextComponent converting a normal string using the base string we feed in the method above.
