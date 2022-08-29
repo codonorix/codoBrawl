@@ -105,6 +105,8 @@ public class ArenaCreator implements CommandExecutor {
 
 						ArenaCreatorObject arenaObj = new ArenaCreatorObject(arenaName, modeType, spawn1value, spawn2value, ArenaCreatorStagesClick.healLocations,ArenaCreatorStagesClick.ddLocations, waitingLobby);
 						new ArenaCreatorToConfig().addArenaToConfig(arenaObj);
+						//Automatically adds to the arenas list on the object creation.
+						ArenaCreatorLoader.arenas.add(arenaObj);
 						player.sendMessage("Arena setup complete.");
 						playerStage.replace(player.getUniqueId(), -1);
 

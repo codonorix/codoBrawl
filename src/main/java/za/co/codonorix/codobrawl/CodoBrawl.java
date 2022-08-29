@@ -2,6 +2,7 @@ package za.co.codonorix.codobrawl;
 
 import org.bukkit.plugin.java.JavaPlugin;
 import za.co.codonorix.codobrawl.arena_creator.*;
+import za.co.codonorix.codobrawl.arena_game.SignJoinEvent;
 import za.co.codonorix.codobrawl.commands.DevCommand;
 import za.co.codonorix.codobrawl.commands.admin_commands.GiveCrystals;
 import za.co.codonorix.codobrawl.commands.admin_commands.RemoveCrystals;
@@ -43,6 +44,12 @@ public final class CodoBrawl extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new ArenaCreatorDropItemEvent(), this);
 		getServer().getPluginManager().registerEvents(new ArenaCreatorBlockPlaceEvent(), this);
 		getServer().getPluginManager().registerEvents(new ArenaCretorSign(), this);
+
+		//======================| GAME MECHANICS |======================\\
+		getServer().getPluginManager().registerEvents(new SignJoinEvent(), this);
+
+		ArenaCreatorLoader arenaCreatorLoader = new ArenaCreatorLoader();
+		arenaCreatorLoader.arenaCreatorLoader();
 	}
 
 	@Override
