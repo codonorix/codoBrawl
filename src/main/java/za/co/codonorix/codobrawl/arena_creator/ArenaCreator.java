@@ -119,8 +119,6 @@ public class ArenaCreator implements CommandExecutor {
 				}
 			}
 		}.runTaskTimer(CodoBrawl.getInstance(), 1, 1);
-
-
 		return false;
 	}
 }

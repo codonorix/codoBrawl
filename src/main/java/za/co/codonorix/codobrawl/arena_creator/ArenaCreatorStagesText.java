@@ -2,6 +2,7 @@ package za.co.codonorix.codobrawl.arena_creator;
 
 import io.papermc.paper.event.player.AsyncChatEvent;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -20,6 +21,8 @@ public class ArenaCreatorStagesText implements Listener {
 	static Location spawnTwo;
 	static ArrayList<Location> healthSpawns;
 	static ArrayList<Location> ddSpawns;
+
+	ArrayList<ArenaCreatorObject> arenas = ArenaCreatorLoader.arenas;
 
 	@EventHandler
 	public void onAsyncChatEvent(AsyncChatEvent event) {
@@ -51,6 +54,16 @@ public class ArenaCreatorStagesText implements Listener {
 		switch(stage) {
 			case 0:
 				arenaName = event.message().asComponent();
+				TextComponent arenaNameText = (TextComponent) arenaName;
+				for(int i = 0; i < ArenaCreatorLoader.arenas.size(); i++) {
+					TextComponent curArenaNames = (TextComponent) arenas.get(i).name;
+					TextComponent arenaName = (TextComponent) ArenaCreatorLoader.arenas.get(i).name;
+					if(arenaNameText.content().equals(arenaName.content())) {
+						player.sendMessage(Component.text("This arena name is already in use.", TextColor.color(255, 0, 20)));
+						return;
+					}
+				}
+
 				player.sendMessage(arenaName.color(TextColor.color(255, 255, 255)));
 
 				//Moving the player up to the next stage in the arena creation process.

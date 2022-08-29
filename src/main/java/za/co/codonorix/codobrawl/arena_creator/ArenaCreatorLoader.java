@@ -1,5 +1,6 @@
 package za.co.codonorix.codobrawl.arena_creator;
 
+import net.kyori.adventure.text.Component;
 import org.bukkit.Location;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -11,43 +12,25 @@ import java.util.Map;
 import java.util.Set;
 
 public class ArenaCreatorLoader {
-	ArrayList<ArenaCreatorObject> arenas = new ArrayList<>();
+	public static ArrayList<ArenaCreatorObject> arenas = new ArrayList<>();
 
 	public void arenaCreatorLoader() {
-//		FileConfiguration config = CodoBrawl.getInstance().getConfig();
-//
-////		Set<String> test = config.getConfigurationSection("arenas").getKeys(true);
-//		Map<String, Object> test = config.getConfigurationSection("arenas").getValues(true);
-//
-////		System.out.println(test.values());
-//		int i = 1;
-//		ArrayList<String> arenaName = new ArrayList<>();
-//		ArrayList<Integer> arenaMode = new ArrayList<>();
-//		ArrayList<Location> spawn1 = new ArrayList<>();
-//		ArrayList<Location> spawn2 = new ArrayList<>();
-//		ArrayList<Location> healingLocation = new ArrayList<>();
-//		ArrayList<Location> ddLocation = new ArrayList<>();
-//
-//		Object[] testing = test.values().toArray();
-//		System.out.println(testing[7]);
-//		for(int i = 0; i < testing.length; i++) {
-//			switch (i){
-//				case 1:
-//					arenaName.add((String) testing[i]);
-//					i++;
-//					break;
-//				case 2:
-//					arenaMode.add((int) testing[i]);
-//					i++;
-//					break;
-//				case 3:
-//			}
-//			System.out.println(Arrays.toString(testing));
-//		}
+		FileConfiguration config = CodoBrawl.getInstance().getConfig();
 
-////		for(Object data : test.values()) {
-//
-//			System.out.println(data);
-//		}
+		Map<String, Object> getConfig = config.getConfigurationSection("arenas").getValues(false);
+		Object[] testing = getConfig.keySet().toArray();
+		for(int i = 0; i < testing.length; i++) {
+			Map<String, Object> arenaData = config.getConfigurationSection("arenas." + testing[i]).getValues(true);
+			Object[] arenaDataList = arenaData.values().toArray();
+			Component name = Component.text((String) arenaDataList[0]);
+			int arenaMode = (int) arenaDataList[1];
+			Location spawn1 = (Location) arenaDataList[2];
+			Location spawn2 = (Location) arenaDataList[3];
+			ArrayList<Location> healLocations = (ArrayList<Location>) arenaDataList[4];
+			ArrayList<Location> ddLocation = (ArrayList<Location>) arenaDataList[5];
+
+			ArenaCreatorObject newArena = new ArenaCreatorObject(name, arenaMode, spawn1, spawn2, healLocations, ddLocation);
+			arenas.add(newArena);
+		}
 	}
 }
