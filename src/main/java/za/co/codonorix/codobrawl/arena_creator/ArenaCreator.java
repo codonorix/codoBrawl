@@ -91,12 +91,19 @@ public class ArenaCreator implements CommandExecutor {
 						player.getInventory().setItem(1, confirm);
 						break;
 					case 5:
+						ItemStack setLobbyItem = itemCreator.itemBuilder("Set waiting lobby", TextColor.color(0, 255, 0), Material.CLOCK, null, -1, "SET_WAITING_LOBBY");
+
+						player.getInventory().setItem(0, setLobbyItem);
+						player.getInventory().setItem(1, confirm);
+						break;
+					case 6:
 						Component arenaName = ArenaCreatorStagesText.arenaName;
 						int modeType = ArenaCreatorStagesText.modeInt;
 						Location spawn1value = ArenaCreatorStagesClick.spawn1;
 						Location spawn2value = ArenaCreatorStagesClick.spawn2;
+						Location waitingLobby = ArenaCreatorStagesClick.waitingLobby;
 
-						ArenaCreatorObject arenaObj = new ArenaCreatorObject(arenaName, modeType, spawn1value, spawn2value, ArenaCreatorStagesClick.healLocations,ArenaCreatorStagesClick.ddLocations);
+						ArenaCreatorObject arenaObj = new ArenaCreatorObject(arenaName, modeType, spawn1value, spawn2value, ArenaCreatorStagesClick.healLocations,ArenaCreatorStagesClick.ddLocations, waitingLobby);
 						new ArenaCreatorToConfig().addArenaToConfig(arenaObj);
 						player.sendMessage("Arena setup complete.");
 						playerStage.replace(player.getUniqueId(), -1);
@@ -108,6 +115,13 @@ public class ArenaCreator implements CommandExecutor {
 						firstRun = false;
 						playerStage.remove(player.getUniqueId());
 						player.getInventory().clear();
+
+						//Reset values
+						ArenaCreatorStagesClick.spawn1 = null;
+						ArenaCreatorStagesClick.spawn2 = null;
+						ArenaCreatorStagesClick.healLocations.clear();
+						ArenaCreatorStagesClick.ddLocations.clear();
+						ArenaCreatorStagesClick.waitingLobby = null;
 
 						player.getInventory().setContents(playerInv.get(player.getUniqueId()));
 						player.updateInventory();

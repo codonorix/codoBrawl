@@ -20,6 +20,7 @@ public class ArenaCreatorStagesClick implements Listener {
 	static Location spawn2 = null;
 	static ArrayList<Location> healLocations = new ArrayList<>();
 	static ArrayList<Location> ddLocations = new ArrayList<>();
+	static Location waitingLobby = null;
 
 	@EventHandler
 	public void onClickEvent(PlayerInteractEvent event) {
@@ -117,6 +118,28 @@ public class ArenaCreatorStagesClick implements Listener {
 				else{
 					player.sendMessage(Component.text("Double damage locations set.", TextColor.color(0, 255, 0)));
 					ArenaCreator.playerStage.replace(player.getUniqueId(), 5);
+					player.getInventory().clear();
+				}
+			}
+		}else if(ArenaCreator.playerStage.get(player.getUniqueId()) == 5){
+			NamespacedKey waitingLobbyKey = new NamespacedKey(CodoBrawl.getInstance(), "SET_WAITING_LOBBY");
+			NamespacedKey confirmKey = new NamespacedKey(CodoBrawl.getInstance(), "CONFIRM_SPAWN");
+
+			try {
+				if (dataContainer.has(waitingLobbyKey)) {
+					waitingLobby = event.getClickedBlock().getLocation();
+					player.sendMessage(Component.text("Waiting lobby location set.", TextColor.color(0, 255, 0)));
+				}
+			}catch (Exception ex){
+				player.sendMessage(Component.text("Please look at a valid block.", TextColor.color(255, 0, 20)));
+			}
+
+			if(dataContainer.has(confirmKey)) {
+				if(waitingLobby == null)
+					player.sendMessage(Component.text("You need to set a waiting lobby!", TextColor.color(255, 0, 20)));
+				else{
+					player.sendMessage(Component.text("Waiting lobby set.", TextColor.color(0, 255, 0)));
+					ArenaCreator.playerStage.replace(player.getUniqueId(), 6);
 					player.getInventory().clear();
 				}
 			}

@@ -28,8 +28,9 @@ public class ArenaCreatorLoader {
 			Location spawn2 = (Location) arenaDataList[3];
 			ArrayList<Location> healLocations = (ArrayList<Location>) arenaDataList[4];
 			ArrayList<Location> ddLocation = (ArrayList<Location>) arenaDataList[5];
+			Location waitingLobby = (Location) arenaDataList[6];
 
-			ArenaCreatorObject newArena = new ArenaCreatorObject(name, arenaMode, spawn1, spawn2, healLocations, ddLocation);
+			ArenaCreatorObject newArena = new ArenaCreatorObject(name, arenaMode, spawn1, spawn2, healLocations, ddLocation, waitingLobby);
 			arenas.add(newArena);
 		}
 	}

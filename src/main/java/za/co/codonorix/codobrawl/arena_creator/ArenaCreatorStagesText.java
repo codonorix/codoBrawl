@@ -56,8 +56,8 @@ public class ArenaCreatorStagesText implements Listener {
 				arenaName = event.message().asComponent();
 				TextComponent arenaNameText = (TextComponent) arenaName;
 				for(int i = 0; i < ArenaCreatorLoader.arenas.size(); i++) {
-					TextComponent curArenaNames = (TextComponent) arenas.get(i).name;
-					TextComponent arenaName = (TextComponent) ArenaCreatorLoader.arenas.get(i).name;
+					TextComponent curArenaNames = (TextComponent) arenas.get(i).getName();
+					TextComponent arenaName = (TextComponent) ArenaCreatorLoader.arenas.get(i).getName();
 					if(arenaNameText.content().equals(arenaName.content())) {
 						player.sendMessage(Component.text("This arena name is already in use.", TextColor.color(255, 0, 20)));
 						return;
