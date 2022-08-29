@@ -47,4 +47,7 @@ public class ArenaCreatorObject {
 	public ArrayList<Location> getDdLocation() {
 		return ddLocation;
 	}
+	public Location getWaitingLobby() {
+		return waitingLobby;
+	}
 }

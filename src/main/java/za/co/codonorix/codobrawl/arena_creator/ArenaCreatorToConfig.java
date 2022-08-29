@@ -19,6 +19,7 @@ public class ArenaCreatorToConfig {
 		config.set("arenas."+ name +".spawn2", arena.getSpawn2());
 		config.set("arenas."+ name +".healthLocations", arena.getHealthLocation());
 		config.set("arenas."+ name +".ddLocations", arena.getDdLocation());
+		config.set("arenas."+ name + ".waitingLobby", arena.getWaitingLobby());
 
 		CodoBrawl.getInstance().saveConfig();
 	}

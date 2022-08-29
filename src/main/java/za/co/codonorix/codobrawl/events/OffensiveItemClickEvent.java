@@ -15,6 +15,7 @@ import za.co.codonorix.codobrawl.stats.PlayerInformation;
 public class OffensiveItemClickEvent implements Listener {
     @EventHandler
     private void itemClickEvent(PlayerInteractEvent event) {
+
         NamespacedKey key = new NamespacedKey(CodoBrawl.getInstance(), "OFFENSIVE_ITEM");
         ItemMeta itemMeta;
 		/*

@@ -17,6 +17,8 @@ public class ArenaCreatorLoader {
 	public void arenaCreatorLoader() {
 		FileConfiguration config = CodoBrawl.getInstance().getConfig();
 
+		if(config.getConfigurationSection("arenas") == null) return;
+
 		Map<String, Object> getConfig = config.getConfigurationSection("arenas").getValues(false);
 		Object[] testing = getConfig.keySet().toArray();
 		for(int i = 0; i < testing.length; i++) {
